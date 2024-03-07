@@ -14,11 +14,11 @@ from color_app.forms import ColorForm
 def home_view(request):
     "A view function which renders the homepage"
 
-    skyblue = Color(name="skyblue", red=135, green=206, blue=250)
+    purple = Color(name="purple", red=160, green=32, blue=240)
 
     params = {
-        "name": "stranger",
-        "color": skyblue,
+        "name": "Keaton",
+        "color": purple,
     }
     
     response = render(request, 'color_app/index.html', params)
@@ -42,13 +42,13 @@ def random_color_view(request):
 # Class Based Views
 #######################
 
-class ColorListView(ListView):
-    model = Color
-    template_name = "color_app/color_list.html"
-    queryset = Color.objects.order_by("name")
-
-class NewColorView(CreateView):
-    model = Color
-    form_class = ColorForm
-    template_name = "color_app/color_form.html"
-    success_url = reverse_lazy("color_app:color_list")
+class ColorListView(ListView):                                                                                         
+    model = Color                                                                                                      
+    template_name = "color_app/color_list.html"                                                                       
+    queryset = Color.objects.order_by("name")                                                                          
+                                                                                                                       
+class NewColorView(CreateView):                                                                                        
+    model = Color                                                                                                      
+    form_class = ColorForm                                                                                             
+    template_name = "color_app/color_form.html"                                                                       
+    success_url = reverse_lazy("color_app:color_list") 
